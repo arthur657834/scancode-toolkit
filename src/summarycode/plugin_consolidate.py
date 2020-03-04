@@ -391,8 +391,7 @@ def get_holders_consolidated_components(codebase):
     # holders we have already created a consolidation for.
     has_been_consolidated = set()
     for resource in codebase.walk(topdown=True):
-        current_holders = resource.extra_data.get('current_holders', set())
-        for holder in current_holders:
+        for holder in resource.extra_data.get('current_holders', set()):
             if holder in has_been_consolidated:
                 continue
             has_been_consolidated.add(holder)
